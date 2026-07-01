@@ -1,0 +1,21 @@
+[package]
+name = "demo"
+publish = false
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[features]
+default = ["crossterm"]
+crossterm = ["dep:crossterm", "ratatui/crossterm"]
+termina = ["ratatui/termina"]
+termion = ["dep:termion", "ratatui/termion"]
+termwiz = ["dep:termwiz", "ratatui/termwiz"]
+
+[dependencies]
+crossterm = { workspace = true, optional = true }
+rpsq-rs.workspace = true
+termwiz = { workspace = true, optional = true }
+
+[target.'cfg(not(windows))'.dependencies]
+termion = { workspace = true, optional = true }
